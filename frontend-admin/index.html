@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>赛博战机：终极防御</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <!-- 加载界面 -->
+    <div id="loader">
+        <div class="loader-content">
+            <h1 class="neon-text">赛博战机</h1>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p>系统初始化中...</p>
+        </div>
+    </div>
+
+    <!-- 游戏容器 -->
+    <div id="game-container">
+        <!-- 背景网格 -->
+        <div class="cyber-grid"></div>
+        <div class="cyber-grid-overlay"></div>
+
+        <!-- 画布层 -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- UI层 -->
+        <div id="ui-layer">
+
+            <!-- 顶部HUD -->
+            <div class="hud-top">
+                <div class="hud-lives" id="hud-lives">
+                    <!-- 生命图标由JS注入 -->
+                </div>
+                <div class="hud-score">
+                    <span id="score-display">0</span>
+                    <div class="score-label">分数</div>
+                </div>
+                <div class="hud-level">
+                    <span id="level-display">等级 1</span>
+                </div>
+            </div>
+
+            <!-- BOSS血条 -->
+            <div id="boss-hud" class="hidden">
+                <div class="boss-name" id="boss-name">警告：检测到BOSS</div>
+                <div class="hp-bar-container">
+                    <div class="hp-bar" id="boss-hp-bar"></div>
+                </div>
+            </div>
+
+            <!-- 消息通知区域 -->
+            <div id="message-area"></div>
+
+            <!-- 底部控制栏 -->
+            <div class="hud-bottom">
+                <button id="btn-pause" class="cyber-btn">暂停</button>
+                <div class="controls-hint" id="controls-hint"></div>
+                <div class="audio-control">
+                    <input type="range" id="volume-slider" min="0" max="100" value="50" class="volume-slider">
+                    <button id="btn-audio" class="cyber-btn">音效: 开</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 弹窗 -->
+        <div id="modal-start" class="modal">
+            <div class="modal-content glass-panel">
+                <h1 class="neon-title">赛博战机<br><small>终极防御</small></h1>
+                <p class="mission-briefing">
+                    任务：抵御无尽的敌机浪潮<br>
+                    目标：消灭精英机甲与终极母舰
+                </p>
+                <p class="start-controls-hint" id="start-controls-hint"></p>
+                <button id="btn-start" class="cyber-btn large glow">开始游戏</button>
+            </div>
+        </div>
+
+        <div id="modal-pause" class="modal hidden">
+            <div class="modal-content glass-panel">
+                <h2 class="neon-text">游戏暂停</h2>
+                <div class="btn-group">
+                    <button id="btn-resume" class="cyber-btn large">继续游戏</button>
+                    <button id="btn-restart-pause" class="cyber-btn warning">重新开始</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-gameover" class="modal hidden">
+            <div class="modal-content glass-panel">
+                <h2 class="neon-text red">任务失败</h2>
+                <div class="final-score-box">
+                    <p>最终分数</p>
+                    <h3 id="final-score">0</h3>
+                </div>
+                <div class="high-score-box">
+                    <p>最高分数: <span id="high-score">0</span></p>
+                </div>
+                <div class="btn-group">
+                    <button id="btn-retry" class="cyber-btn large glow">重新挑战</button>
+                    <button id="btn-home" class="cyber-btn">返回主页</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 脚本 -->
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
