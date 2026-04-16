@@ -72,6 +72,8 @@ export class Enemy {
                 this.attackMode = (this.attackMode + 1) % 2;
                 this.modeTimer = 0;
                 this.laserActive = false;
+                // 标记所有激光子弹为删除
+                this.laserBullets.forEach(b => b.markedForDeletion = true);
                 this.laserBullets = [];
             }
 

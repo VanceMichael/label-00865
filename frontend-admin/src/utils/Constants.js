@@ -14,7 +14,7 @@ export const CONSTANTS = {
         WIDTH: 40,
         HEIGHT: 48,
         FIRE_RATE: 300, // ms
-        INVULNERABILITY_TIME: 1000 // ms
+        INVULNERABILITY_TIME: 2 // seconds
     },
     BULLET: {
         SPEED: 10,

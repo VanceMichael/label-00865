@@ -48,11 +48,11 @@ export class ScoreManager {
         }
 
         // 达到5连杀触发连杀加成
-        if (killCount > this.streakThreshold) {
+        if (killCount >= this.streakThreshold) {
             this.addScore(500);
             this.game.audio.playSound('powerup');
             this.game.ui.showMessage("🔥 连杀加成! +500 🔥");
-            this.killHistory = this.killHistory.slice(this.streakThreshold - 1);
+            this.killHistory = [];
         }
     }
 

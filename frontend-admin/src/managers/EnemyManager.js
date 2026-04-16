@@ -34,12 +34,12 @@ export class EnemyManager {
         }
 
         // Boss Triggers
-        if (score >= 5000 && score < 5500) {
+        if (score >= 5000 && score < 5500 && !this.game.bossEncountered.elite) {
             this.spawnBoss('BOSS_ELITE');
             this.game.bossEncountered.elite = true;
         }
 
-        if (score >= 15000) {
+        if (score >= 15000 && !this.game.bossEncountered.ultimate) {
             this.spawnBoss('BOSS_ULTIMATE');
             this.game.bossEncountered.ultimate = true;
         }
@@ -127,7 +127,7 @@ export class EnemyManager {
             this.game.items.push(new Item(boss.x + 100, boss.y, 'POWER'));
             // 解锁无敌模式效果
             this.game.player.triggerInvulnerability();
-            this.game.player.invulnerabilityTimer = 5000; // 5秒无敌
+            this.game.player.invulnerabilityTimer = 5; // 5秒无敌
             this.game.ui.showMessage("ULTIMATE VICTORY! 5s INVINCIBLE!");
         }
     }
