@@ -34,12 +34,12 @@ export class EnemyManager {
         }
 
         // Boss Triggers
-        if (score >= 5000 && score < 5500) {
+        if (score >= 5000 && score < 5500 && !this.game.bossEncountered.elite) {
             this.spawnBoss('BOSS_ELITE');
             this.game.bossEncountered.elite = true;
         }
 
-        if (score >= 15000) {
+        if (score >= 15000 && !this.game.bossEncountered.ultimate) {
             this.spawnBoss('BOSS_ULTIMATE');
             this.game.bossEncountered.ultimate = true;
         }
