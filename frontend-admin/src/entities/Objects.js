@@ -99,7 +99,7 @@ export class Bullet {
         this.isTracking = options.tracking || false;
         this.trackingSpeed = options.trackingSpeed || 0.03;
         this.target = options.target || null;
-        this.lifetime = options.lifetime || 5;
+        this.lifetime = options.lifetime || 10;
 
         // 旋转激光属性
         this.angle = options.angle || 0;
