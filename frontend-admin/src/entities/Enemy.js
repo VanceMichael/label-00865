@@ -131,7 +131,7 @@ export class Enemy {
                 tracking: true,
                 trackingSpeed: 0.02,
                 target: this.game.player,
-                lifetime: 8
+                lifetime: 6
             });
             bullet.isPlayer = false;
             this.game.bullets.push(bullet);

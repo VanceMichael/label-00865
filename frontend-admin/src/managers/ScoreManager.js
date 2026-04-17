@@ -52,7 +52,8 @@ export class ScoreManager {
             this.addScore(500);
             this.game.audio.playSound('powerup');
             this.game.ui.showMessage("🔥 连杀加成! +500 🔥");
-            this.killHistory = this.killHistory.slice(this.streakThreshold - 1);
+            // 触发奖励后清空连杀记录，需要重新累计5次才能再次触发
+            this.killHistory = [];
         }
     }
 
