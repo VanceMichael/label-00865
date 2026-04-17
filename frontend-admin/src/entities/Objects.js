@@ -96,16 +96,16 @@ export class Bullet {
         this.isPlayer = (type !== 'enemy' && type !== 'tracking' && type !== 'rotating_laser');
 
         // 跟踪子弹属性
-        this.isTracking = options.tracking || false;
-        this.trackingSpeed = options.trackingSpeed || 0.03;
-        this.target = options.target || null;
-        this.lifetime = options.lifetime || 10;
+        this.isTracking = options.tracking ?? false;
+        this.trackingSpeed = options.trackingSpeed ?? 0.03;
+        this.target = options.target ?? null;
+        this.lifetime = options.lifetime ?? 10;
 
         // 旋转激光属性
-        this.angle = options.angle || 0;
-        this.rotationSpeed = options.rotationSpeed || 0;
-        this.origin = options.origin || { x: x, y: y };
-        this.length = options.length || 200;
+        this.angle = options.angle ?? 0;
+        this.rotationSpeed = options.rotationSpeed ?? 0;
+        this.origin = options.origin ?? { x: x, y: y };
+        this.length = options.length ?? 200;
     }
 
     update(dt) {
