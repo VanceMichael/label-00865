@@ -178,8 +178,9 @@ export class Game {
 
             this.enemies.forEach(enemy => {
                 if (Helpers.checkRectCollision(bullet, enemy)) {
-                    if (bullet.type === 'laser') bullet.markedForDeletion = false;
-                    bullet.markedForDeletion = true;
+                    if (bullet.type !== 'laser') {
+                        bullet.markedForDeletion = true;
+                    }
 
                     const killed = enemy.takeDamage(CONSTANTS.BULLET.DAMAGE);
                     if (killed) {
@@ -217,7 +218,7 @@ export class Game {
         // Player collision with Enemy Body
         this.enemies.forEach(enemy => {
              if (Helpers.checkRectCollision(this.player, enemy)) {
-                 if (!this.player.isInvulnerable) {
+                 if (!this.player.isInvulnerable && !this.player.damageCooldown) {
                      this.player.takeDamage();
                      enemy.takeDamage(10); // Ramming damages enemy too
                  }
@@ -231,7 +232,7 @@ export class Game {
             // 旋转激光特殊碰撞检测
             if (bullet.type === 'rotating_laser') {
                 if (Helpers.checkLaserCollision(bullet, this.player)) {
-                    if (!this.player.isInvulnerable) {
+                    if (!this.player.isInvulnerable && !this.player.damageCooldown) {
                         this.player.takeDamage();
                     }
                 }
@@ -239,7 +240,7 @@ export class Game {
             }
 
             if (Helpers.checkRectCollision(bullet, this.player)) {
-                 if (!this.player.isInvulnerable) {
+                 if (!this.player.isInvulnerable && !this.player.damageCooldown) {
                      bullet.markedForDeletion = true;
                      this.player.takeDamage();
                  }

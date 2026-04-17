@@ -14,6 +14,7 @@ export class Player {
         this.maxLives = 5;
         this.isInvulnerable = false;
         this.invulnerabilityTimer = 0;
+        this.damageCooldown = false; // 伤害冷却标志
 
         this.fireTimer = 0;
         this.baseFireRate = CONSTANTS.PLAYER.FIRE_RATE; // 保存基础射速
@@ -57,6 +58,11 @@ export class Player {
             this.invulnerabilityTimer -= dt;
             if (this.invulnerabilityTimer <= 0) {
                 this.isInvulnerable = false;
+                // 添加0.5秒的伤害冷却，防止无敌结束后立即受伤
+                this.damageCooldown = true;
+                setTimeout(() => {
+                    this.damageCooldown = false;
+                }, 500);
             }
         }
 
@@ -99,7 +105,7 @@ export class Player {
     }
 
     takeDamage() {
-        if (this.isInvulnerable) return;
+        if (this.isInvulnerable || this.damageCooldown) return;
 
         if (this.shield > 0) {
             this.shield--;
@@ -151,8 +157,8 @@ export class Player {
     }
 
     draw(ctx) {
-        // Blink if invulnerable
-        if (this.isInvulnerable && Math.floor(Date.now() / 100) % 2 === 0) return;
+        // Blink if invulnerable - 优化闪烁频率，让玩家更容易看到
+        if (this.isInvulnerable && Math.floor(Date.now() / 200) % 2 === 0) return;
 
         ctx.save();
         // Shield Effect
