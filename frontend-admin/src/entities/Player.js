@@ -54,7 +54,7 @@ export class Player {
 
         // Invulnerability
         if (this.isInvulnerable) {
-            this.invulnerabilityTimer -= dt;
+            this.invulnerabilityTimer -= dt * 1000;
             if (this.invulnerabilityTimer <= 0) {
                 this.isInvulnerable = false;
             }

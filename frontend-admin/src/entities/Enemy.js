@@ -72,6 +72,10 @@ export class Enemy {
                 this.attackMode = (this.attackMode + 1) % 2;
                 this.modeTimer = 0;
                 this.laserActive = false;
+                // 标记所有激光为删除状态
+                this.laserBullets.forEach(laser => {
+                    laser.markedForDeletion = true;
+                });
                 this.laserBullets = [];
             }
 
@@ -127,7 +131,7 @@ export class Enemy {
                 tracking: true,
                 trackingSpeed: 0.02,
                 target: this.game.player,
-                lifetime: 4
+                lifetime: 6
             });
             bullet.isPlayer = false;
             this.game.bullets.push(bullet);

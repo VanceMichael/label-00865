@@ -134,10 +134,12 @@ export class Bullet {
             this.y += this.vy;
         }
 
-        // Boundary check
+        // Boundary check - 跟踪子弹不做边界删除，只在生命周期结束时删除
         if (this.lifetime < 0 ||
-            this.y < -100 || this.y > CONSTANTS.CANVAS_HEIGHT + 100 ||
-            this.x < -100 || this.x > CONSTANTS.CANVAS_WIDTH + 100) {
+            (!this.isTracking && (
+                this.y < -100 || this.y > CONSTANTS.CANVAS_HEIGHT + 100 ||
+                this.x < -100 || this.x > CONSTANTS.CANVAS_WIDTH + 100
+            ))) {
             this.markedForDeletion = true;
         }
     }
