@@ -178,8 +178,9 @@ export class Game {
 
             this.enemies.forEach(enemy => {
                 if (Helpers.checkRectCollision(bullet, enemy)) {
-                    if (bullet.type === 'laser') bullet.markedForDeletion = false;
-                    bullet.markedForDeletion = true;
+                    if (bullet.type !== 'laser') {
+                        bullet.markedForDeletion = true;
+                    }
 
                     const killed = enemy.takeDamage(CONSTANTS.BULLET.DAMAGE);
                     if (killed) {

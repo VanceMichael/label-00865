@@ -72,6 +72,10 @@ export class Enemy {
                 this.attackMode = (this.attackMode + 1) % 2;
                 this.modeTimer = 0;
                 this.laserActive = false;
+                // 切换模式时清除所有旋转激光
+                this.laserBullets.forEach(laser => {
+                    laser.markedForDeletion = true;
+                });
                 this.laserBullets = [];
             }
 
